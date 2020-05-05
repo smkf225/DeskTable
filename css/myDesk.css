@@ -1,0 +1,91 @@
+body {
+	background-color: #ECF4FC;
+	font-size: 12px;
+	font-family: 微软雅黑;
+	/* 以上是禁止选中文本 */
+	-webkit-user-select: none;
+	/*webkit浏览器*/
+	-moz-user-select: none;
+	/*火狐*/
+	-o-user-select: none;
+	user-select: none;
+
+}
+
+ul {
+	overflow: auto;
+	padding: 10px;
+}
+
+li {
+	width: 126px;
+	height: 86px;	
+	border: 2px solid #ECF4FC;
+	border-radius: 5px;
+	margin: 10px;
+	/* 上下左右位移10px  border: 2px ;solid deeppink*/	 
+	box-shadow: 0px 0px 5px black;
+	cursor: pointer;
+	list-style-type: none;
+	float: left;
+}
+
+ li:hover {
+	box-shadow: 0px 0px 20px black;
+/* 	-webkit-transform: translateY(-10px);
+	-ms-transform: translateY(-10px);
+	transform: translateY(-10px); */
+} 
+
+/* float:left代表的是元素左对齐。这样li标签就可以横排显示了，list-style:none用来去除li标签前面的小圆点
+ 
+ li 并排居中
+ ul{text-align:center;}
+ li{display:inline-block;} 
+ 不需要用浮动。 
+ */
+.top {
+	height: 24px;
+	line-height: 24px;
+	text-align: left;
+}
+
+.ChangeEmpty {
+	background-color: white;
+}
+
+.ChangeUse {
+	background-color: pink;
+}
+
+.ChangePaybill {
+	background-color: red;
+}
+.ChangeClean {
+	background-color: #aa5500;
+}
+.center {
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	/*设置文本水平居中*/
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.footer {
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	/* background-color: cadetblue; */
+}
+
+.topleft, .footerleft{
+	float: left;
+	margin-left: 5px;
+}
+
+.topright,.footerright {
+	float: right;
+	margin-right: 5px;
+}
