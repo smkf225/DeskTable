@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>餐桌-Title</title>
+		<link rel="stylesheet" href="css/myDesk.css" media="screen" type="text/css" />
+		<!-- <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script> -->
+		<script type="text/javascript" src="js/myDesk.js"></script>
+		<script type="text/javascript">
+			var lastid = '';
+
+			function returnlastid() {
+				if (lastid !== '') {
+					return lastid;
+				} else
+					return False;
+			}
+			/* li中的点击事件有三种.
+			1. 需要在 元素中写 onclick = "doli(this)"
+			}
+			2. 不需要在 元素中写 onclick; (这个不行。这个没有办法添加onclick)
+			但要在script中 不用写函数 $("位置"), 这个有个前题要加上jquery
+			//	<script src = "http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js" >
+			 $("#ulchat li").click(function() {
+			 	var ID = ($(this).attr('id'));
+			 	alert(ID);
+			 }); 这个必须写在最后面			 
+			 */
+
+			/* 禁止鼠标右键 */
+			function MouseRightClickStop() {
+				return false;
+			}
+			document.oncontextmenu = MouseRightClickStop;
+			/* 禁止鼠标右键 */
+		</script>
+	</head>
+	<body>
+		<ul id="ulchat" Class="ulchat">
+			<!-- data-name里面只能写小写 -->
+			<li id="id1" class="ChangeUse" data-state="1" data-parentid="01" data-myDeskid="">
+				<div class="top">
+					<span id="GuestNum" class="topleft">1人</span>
+					<span id="DeskState" class="topright">使用中</span>
+				</div>
+				<div id="DeskMC" class="center">大厅1</div>
+				<div class="footer">
+					<span id="SumMoney" class="footerleft">￥123.00</span>
+					<span id="Usetime" class="footerright">00:00</span>
+				</div>
+			</li>
+			<li id="id2" class="ChangePaybill" data-state="2" data-parentid="01" data-myDeskid="01">
+				<div class="top">
+					<span id="GuestNum" class="topleft">1人</span>
+					<span id="DeskState" class="topright">结账中</span>
+				</div>
+				<div id="DeskMC" class="center">大厅2</div>
+				<div class="footer">
+					<span id="SumMoney" class="footerleft">￥123.00</span>
+					<span id="Usetime" class="footerright">0:0</span>
+				</div>
+			</li>
+			<li id="id3" class="ChangeEmpty" data-state="0" data-parentid="02" data-myDeskid="01">
+				<div class="top">
+					<span id="GuestNum" class="topleft"></span>
+					<span id="DeskState" class="topright">空台</span>
+				</div>
+				<div id="DeskMC" class="center">包间1</div>
+				<div class="footer">
+					<span id="SumMoney" class="footerleft"></span>
+					<span id="Usetime" class="footerright">1:1</span>
+				</div>
+			</li>
+			<li id="id4" class="ChangeClean" data-state="3" data-parentid="02" data-myDeskid="01">
+				<div class="top">
+					<span id="GuestNum" class="topleft"></span>
+					<span id="DeskState" class="topright">清扫中</span>
+				</div>
+				<div id="DeskMC" class="center">包间2</div>
+				<div class="footer">
+					<span id="SumMoney" class="footerleft"></span>
+					<span id="Usetime" class="footerright">1:1</span>
+				</div>
+			</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var lis = document.querySelectorAll('li');
+		for (var i = 0; i < lis.length; i++) {
+			/* 	lis[i].remove(); */
+		}
+		window.onload = function AddlionClick() {
+			var lis = document.querySelectorAll('li');
+			for (var i = 0; i < lis.length; i++) 
+				lis[i].onclick = function() {
+					if (lastid !== '') { //上述内容相当于判断lastid=""、lastid=null、lastid = undefined、lastid=0					
+						var ClickID = this.getAttribute('id');
+						if (ClickID !== lastid) { //不全相等就执行						
+							var li1 = document.getElementById(ClickID); //改变点击的颜色
+							li1.style.borderColor = 'deeppink';
+							var li1 = document.getElementById(lastid); //改变最一次点击的颜色
+							li1.style.borderColor = "#ECF4FC";
+							lastid = ClickID;
+						}
+					} else {
+						var ClickID = this.getAttribute('id');
+						var li1 = document.getElementById(ClickID);
+						li1.style.borderColor = "deeppink";
+						lastid = ClickID;
+					}
+					self.location = "https://www.baidu.com#" + ClickID;
+				};			
+		};
+	</script>
+</html>
